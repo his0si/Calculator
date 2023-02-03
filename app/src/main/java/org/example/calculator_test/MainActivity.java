@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import org.example.calculator_test.databinding.ActivityMainBinding;
+
+import java.lang.invoke.LambdaConversionException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,11 +23,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(activityMainBinding.getRoot());
     }
 
-    public void num1Click(View view){
-        activityMainBinding.resultTextView.append("1");
-
+    public void numButtonClick(View view){
+        String getButtonText = view.getTag().toString();
+        if(isFirstInput){
+            activityMainBinding.resultTextView.setText(getButtonText);
+            activityMainBinding.mathTextView.setText(getButtonText);
+            isFirstInput = false;
+        }else{
+            activityMainBinding.resultTextView.append(getButtonText);
+            activityMainBinding.mathTextView.append(getButtonText);
+        }
 
     }
+
 
 
 
