@@ -13,6 +13,9 @@ import java.lang.invoke.LambdaConversionException;
 public class MainActivity extends AppCompatActivity {
 
     boolean isFirstInput = true;
+    double resultNumber = 0;
+    String operator = "＋";
+
     ActivityMainBinding activityMainBinding;
 
 
@@ -36,6 +39,25 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void operatorClick (View view){
+        double inputNumber = Double.parseDouble(activityMainBinding.resultTextView.getText().toString());
+
+        if(operator.equals("＋")){
+            resultNumber = resultNumber + inputNumber;
+        }else if(operator.equals("－")){
+            resultNumber = resultNumber - inputNumber;
+        }else if(operator.equals("×")){
+            resultNumber = resultNumber * inputNumber;
+        } else if (operator.equals("÷")) {
+            resultNumber = resultNumber / inputNumber;
+        }
+
+        activityMainBinding.resultTextView.setText(String.valueOf(resultNumber));
+        isFirstInput = true;
+        operator = view.getTag().toString();
+
+
+    }
 
 
 
