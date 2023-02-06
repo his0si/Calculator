@@ -74,7 +74,16 @@ public class MainActivity extends AppCompatActivity {
 
         resultNumber = calculator(resultNumber,inputNumber,operator);
 
-        if(operator.equals("＋")){
+        activityMainBinding.resultTextView.setText(String.valueOf(resultNumber));
+        isFirstInput = true;
+        operator = view.getTag().toString();
+        activityMainBinding.mathTextView.append(inputNumber + " " + operator + " ");
+    }
+
+    private double calculator(double resultNumber,double inputNumber,String operator) {
+        if(operator.equals("=")){
+            resultNumber = inputNumber;
+        }else if (operator.equals("＋")) {
             resultNumber = resultNumber + inputNumber;
         } else if (operator.equals("－")) {
             resultNumber = resultNumber - inputNumber;
